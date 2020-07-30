@@ -1,0 +1,35 @@
+<a href='/'>Home</a>
+
+
+{% for item in data %}
+    <a href="/edit/{{ item.id }}">Edit Ticket</a>
+    <br/>
+    {{ item.title }}
+    <br/>
+    Ticket:
+    <br/>
+    {{ item.body }}
+    <br/>
+    Status:
+    <br/>
+    {{ item.status }}
+    <br/>
+    Assigned to:
+    <br/>
+    {{ item.assigned_user }}
+    <br/>
+    Completed by:
+    <br/>
+    {{ item.completed_by }}
+    <br/>
+    Created at:
+    <br/>
+    {{ item.time }}
+    <br/>
+    Change Status:
+    <form action="/changestatus/{{ item.id }}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Change Ticket Progress</button>
+    </form>
+{% endfor %}

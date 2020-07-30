@@ -1,0 +1,11 @@
+{% if request.user.is_active %}
+    <a href='/'>Home</a>
+{% endif %}
+<form action='' method='POST'>
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <button type='submit'>Save</button>
+</form>

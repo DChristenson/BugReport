@@ -1,0 +1,34 @@
+{% if request.user.is_active %}
+    <a href='/'>Home</a>
+{% endif %}
+
+<p>User: {{ user.username }}</p>
+Created Tickets:
+<br/>
+{% for item in created_by %}
+    {% if item.creator %}
+        <ul>
+            <li><a href="/ticket/{{ item.id }}">{{ item.title }}</a></li>
+        </ul>
+    {% endif %}
+{% endfor %}
+<br/>
+<br/>
+Assigned Tickets:
+{% for item in assigned_user %}
+    {% if item.creator %}
+        <ul>
+            <li><a href="/ticket/{{ item.id }}">{{ item.title }}</a></li>
+        </ul>
+    {% endif %}
+{% endfor %}
+<br/>
+<br/>
+Completed Tickets:
+{% for item in completed_by %}
+    {% if item.creator %}
+        <ul>
+            <li><a href="/ticket/{{ item.id }}">{{ item.title }}</a></li>
+        </ul>
+    {% endif %}
+{% endfor %}

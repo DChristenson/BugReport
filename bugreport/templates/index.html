@@ -1,0 +1,33 @@
+<h1>Report A La Bug</h1>
+<h4> That's French for Bug Report</h4>
+<a href="reportbug/">Report a Bug</a>
+<a href="logout/">Logout</a>
+
+<h3>New Tickets</h3>
+{% for item in new %}
+    <a href="ticket/{{ item.id }}">{{ item.title }}</a>
+    {{ item.time }}
+    {{ item.body }}
+    Created By: <a href="user/{{ item.creator.id }}">{{ item.creator }}</a>
+    <br/>
+    <br/>
+{% endfor %}
+
+<h3>In-Progress Tickets</h3>
+{% for item in in_progress %}
+    <a href="ticket/{{ item.id }}">{{ item.title }}</a>
+    {{ item.time }}
+    {{ item.body }}
+    Assigned to: <a href="user/{{ item.assigned_user.id }}">{{ item.assigned_user }}</a>
+    <br/>
+    <br/>
+{% endfor %}
+
+<h3>Done Tickets</h3>
+{% for item in done %}
+    <a href="ticket/{{ item.id }}">{{ item.title }}</a>, {{ item.time }}
+    {{ item.body }}
+    Completed by: <a href="user/{{ item.completed_by.id }}">{{ item.completed_by }}</a>
+    <br/>
+    <br/>
+{% endfor %}
